@@ -1,0 +1,33 @@
+<div ng-keypress="move($event)">
+    <!-- <table class="table"> --><br>
+    <div>
+        <div class="col-md-12" ng-repeat="data in output | limitTo:-5">
+            <label ng-class="data.value.indexOf('hit') > 0 ? 'label pull-right label-danger' : 'label pull-right label-success'" style="font-size:60px;">{{data.value}}</label>
+            <!-- <h1 ng-class="1 > 0 ? 'pull-right label-warning' : 'pull-right label-danger'">Hi</h1> -->
+
+        </div>
+        <div class="col-md-12">
+            <label class="label label-primary pull-right" style="font-size:60px;">You're hitpoints: {{hero.hp}}</label>
+        </div>
+    </div>
+        <div class="gr" ng-repeat="row in grid">
+            <div class="rw" ng-repeat="col in row">
+                <img src="img/{{col.value | firstLayer}}.png" alt=""
+                style="top:{{col.y | yToScreen}};left:{{col.x | xToScreen}};" />
+            </div>
+        </div>
+        <div class="gr" ng-repeat="row in grid1">
+            <div class="rw" ng-repeat="col in row">
+                <img src="img/{{col.value | secondLayer}}.png" alt=""
+                style="top:{{col.y | yToScreen}};left:{{col.x | xToScreen}};" />
+            </div>
+        </div>
+        <div class="gr" ng-repeat="row in grid2">
+            <div class="rw" ng-repeat="col in row">
+                <img src="img/{{col.value | thirdLayer}}.png" alt=""
+                style="top:{{col.y | yToScreen}};left:{{col.x | xToScreen}};" />
+            </div>
+        </div>
+    <!-- </table> -->
+</div>
+<img src="img/hero.png" class="hero" style="top:{{hero.y | yToScreen}};left:{{hero.x | xToScreen}};" />
