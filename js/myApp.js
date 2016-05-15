@@ -70,24 +70,27 @@ app.filter('thirdLayer', function(){
 });
 app.filter('xToScreen', function() {
     return function(input, hero) {
+        var offset = 5;
         var w = window,
         d = document,
         e = d.documentElement,
         g = d.getElementsByTagName('body')[0],
         x = w.innerWidth || e.clientWidth || g.clientWidth,
         y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+        input = input - hero.x + offset;
         return (input * (x/22.5)) + 'px';
     }
 });
 app.filter('yToScreen', function() {
     return function(input, hero) {
-        var offset = 1;
+        var offset = 6;
         var w = window,
         d = document,
         e = d.documentElement,
         g = d.getElementsByTagName('body')[0],
         x = w.innerWidth || e.clientWidth || g.clientWidth,
         y = w.innerHeight|| e.clientHeight|| g.clientHeight;
-        return ((offset + input) * ((y)/13)) + 'px';
+        input = input - hero.y + offset;
+        return (input * ((y)/13)) + 'px';
     }
 });
