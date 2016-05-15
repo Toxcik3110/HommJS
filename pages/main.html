@@ -1,31 +1,48 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">HoMM JS</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="#" ui-sref="menu">Home</a></li>
+      <li><a href="#" ui-sref="game">Game</a></li>
+    </ul>
+  </div>
+</nav>
 <div ng-keypress="move($event)">
+<!-- <div on-keydown="onKeydown"> -->
     <!-- <table class="table"> --><br>
     <div>
         <div class="col-md-12" ng-repeat="data in output | limitTo:-5">
-            <label ng-class="data.value.indexOf('hit') > 0 ? 'label pull-right label-danger' : 'label pull-right label-success'" style="font-size:60px;">{{data.value}}</label>
+
+            <label ng-class="data.value.indexOf('hit') > 0 ? 'label pull-right label-danger' : 'label pull-right label-success'" style="font-size:30px;">{{data.value}}</label>
             <!-- <h1 ng-class="1 > 0 ? 'pull-right label-warning' : 'pull-right label-danger'">Hi</h1> -->
 
         </div>
         <div class="col-md-12">
-            <label class="label label-primary pull-right" style="font-size:60px;">You're hitpoints: {{hero.hp}}</label>
+            <label class="label label-primary pull-right" style="font-size:30px;">You're hitpoints: {{hero.hp}}</label>
         </div>
     </div>
         <div class="gr" ng-repeat="row in grid">
-            <div class="rw" ng-repeat="col in row">
+            <div class="rw" ng-repeat="col in row" ng-show="row | rowFilter:hero">
                 <img src="img/{{col.value | firstLayer}}.png" alt=""
-                style="top:{{col.y | yToScreen}};left:{{col.x | xToScreen}};" />
+                style="top:{{col.y | yToScreen:hero}};left:{{col.x | xToScreen:hero}};"
+                ng-show="col | colFilter:hero"/>
             </div>
         </div>
         <div class="gr" ng-repeat="row in grid1">
-            <div class="rw" ng-repeat="col in row">
+            <div class="rw" ng-repeat="col in row" ng-show="row | rowFilter:hero">
+
                 <img src="img/{{col.value | secondLayer}}.png" alt=""
-                style="top:{{col.y | yToScreen}};left:{{col.x | xToScreen}};" />
+                style="top:{{col.y | yToScreen:hero}};left:{{col.x | xToScreen:hero}};"
+                ng-show="col | colFilter:hero"/>
             </div>
         </div>
         <div class="gr" ng-repeat="row in grid2">
-            <div class="rw" ng-repeat="col in row">
+            <div class="rw" ng-repeat="col in row" ng-show="row | rowFilter:hero">
                 <img src="img/{{col.value | thirdLayer}}.png" alt=""
-                style="top:{{col.y | yToScreen}};left:{{col.x | xToScreen}};" />
+                style="top:{{col.y | yToScreen:hero}};left:{{col.x | xToScreen:hero}};"
+                ng-show="col | colFilter:hero"/>
             </div>
         </div>
     <!-- </table> -->
