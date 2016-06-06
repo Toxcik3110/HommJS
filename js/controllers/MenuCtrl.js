@@ -6,7 +6,7 @@ app.controller('MenuCtrl', ['$rootScope', '$scope', '$state', function($rootScop
         console.log("keypress");
         $scope.move(event);
     });
-    $scope.state = 'menu';
+    $scope.state = 'menu'
     var grid = [];
     var firstAvailable = true;
     $scope.output = [];

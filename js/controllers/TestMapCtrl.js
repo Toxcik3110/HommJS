@@ -12,6 +12,29 @@ app.controller('TestMapCtrl', ['$rootScope', '$scope', '$state', '$timeout', fun
         $state.go("menu");
     }
 
+    $scope.selectedObj = null;
+    $scope.owner = "red";
+
+    $scope.select = function(img) {
+        console.log("trying select");
+        if(img.owner == $scope.owner) {
+            console.log("selected " + img);
+            $scope.selectedObj = img;
+        } else if($scope.selectedObj) {
+
+        }
+    }
+
+    $scope.moveTo = function(img) {
+        console.log("trying move");
+        console.log($scope.selectedObj);
+        if($scope.selectedObj && !img.obstacle && (!img.water)) {
+            $scope.selectedObj.x = img.x;
+            $scope.selectedObj.y = img.y;
+            console.log("moving");
+        }
+    }
+
     var closeApp = function() {
     }
     // document.getElementById('eventHandler').focus();
@@ -35,13 +58,13 @@ app.controller('TestMapCtrl', ['$rootScope', '$scope', '$state', '$timeout', fun
         } else {
             if(input.biom) return input.biom;
         }
-        return input;
+        return "void";
     }
 })
 .filter('objectFilter', function() {
     return function(input) {
         // console.log(input);
         if(input.obj) return input.obj;
-
+        return "void";
     }
 });

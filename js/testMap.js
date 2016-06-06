@@ -111,7 +111,11 @@ var testMap = {
             "x":3,
             "y":3,
             "water":false,
-            "biom":"grass",
+            "biom":"grass"
+        },
+        {
+            "x":3,
+            "y":3,
             "obj":"hero",
             "owner":"red"
         },
