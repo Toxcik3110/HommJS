@@ -19,6 +19,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "pages/menu.html",
       controller: 'MenuCtrl'
     })
+    .state('testMap', {
+      url: "",
+      templateUrl: "pages/testMap.html",
+      controller: 'TestMapCtrl'
+    })
 });
 app.filter('firstLayer', function(){
     return function(input) {
@@ -60,9 +65,9 @@ app.filter('thirdLayer', function(){
             case 1:
                 return 'monster';
                 break;
-            case 2:
-                return 'exit';
-                break;
+            // case 2:
+            //     return 'exit';
+            //     break;
             default:
                 return 'void';
         }

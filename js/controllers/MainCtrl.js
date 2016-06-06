@@ -84,10 +84,10 @@ app.controller('MainCtrl', ['$rootScope', '$scope', '$state', '$timeout', functi
                 $scope.output.push({"value":"You've killed the monster!"});
             }
         } else if (c == 2) {
-            $scope.hero.x += deltaX;
-            $scope.hero.y += deltaY;
-            $scope.output.push({"value":"You've finish this level!"});
-            $state.go('menu')
+            // $scope.hero.x += deltaX;
+            // $scope.hero.y += deltaY;
+            // $scope.output.push({"value":"You've finish this level!"});
+            // $state.go('menu')
         }
         $scope.$apply();
     }
