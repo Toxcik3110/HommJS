@@ -1,12 +1,17 @@
 var testMap = {
     "name":"TestMap",
-    "size":"5x5",
+    "size":5,
     "map":[
         {
             "x":0,
             "y":0,
             "water":false,
             "biom":"grass"
+        },
+        {
+            "x":1,
+            "y":0,
+            "obj":"tree"
         },
         {
             "x":1,
