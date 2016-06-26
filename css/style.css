@@ -19,3 +19,9 @@ body {
     width: 4.5vw;
     height: 8vh;
 }
+.cell {
+    content:url("img/cell.png");
+}
+.cell:hover {
+    content:url("img/cellSelected.png");
+}
