@@ -1,0 +1,17 @@
+<div class="col-sm-8">
+    <div ng-repeat="img in grid">
+        <!-- <h1>{{img}}</h1> -->
+        <img
+        src="img/cell.png"
+        style="top:{{(img.y * 32 * interfaceScale) + 'px'}};width:{{(32 * interfaceScale) + 'px'}};height:{{(32 * interfaceScale) + 'px'}};
+        position:absolute;left:{{(img.x * 32 * interfaceScale) + 'px'}};"
+        ng-click="select(img)"/>
+
+        <!-- <h1>testmap</h1> -->
+    </div>
+
+
+</div>
+<div class="col-sm-4">
+    content
+</div>

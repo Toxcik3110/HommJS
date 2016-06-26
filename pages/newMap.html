@@ -1,0 +1,45 @@
+<div class="col-sm-8">
+    <div ng-repeat="img in level.ground">
+        <!-- <h1>{{img}}</h1> -->
+        <img
+        src="img/{{img | stringFilter}}.png"
+        style="top:{{(img.y * 32 * interfaceScale) + 'px'}};width:{{(32 * interfaceScale) + 'px'}};height:{{(32 * interfaceScale) + 'px'}};
+        position:absolute;left:{{(img.x * 32 * interfaceScale) + 'px'}};"
+        ng-click="select(img)"/>
+
+        <!-- <h1>testmap</h1> -->
+    </div>
+    <div ng-repeat="img in path">
+        <img
+        src="img/{{img.path}}.png"
+        style="top:{{(img.y * 32 * interfaceScale + 16) + 'px'}};width:{{(16 * interfaceScale) + 'px'}};height:{{(16 * interfaceScale) + 'px'}};
+        position:absolute;left:{{(img.x * 32 * interfaceScale + 16) + 'px'}};"
+        ng-click="moveTo(img)"/>
+    </div>
+    <div ng-repeat="img in level.terrain">
+        <!-- <h1>{{img}}</h1> -->
+        <img
+        src="img/{{img | stringFilter}}.png"
+        style="top:{{(img.y * 32 * interfaceScale) + 'px'}};width:{{(32 * interfaceScale) + 'px'}};height:{{(32 * interfaceScale) + 'px'}};
+        position:absolute;left:{{(img.x * 32 * interfaceScale) + 'px'}};"/>
+
+        <!-- <h1>testmap</h1> -->
+    </div>
+    <div ng-repeat="img in level.structures">
+        <img
+        src="img/{{img | stringFilter}}.png"
+        style="top:{{(img.y * 32 * interfaceScale) + 'px'}};width:{{(32 * interfaceScale) + 'px'}};height:{{(32 * interfaceScale) + 'px'}};
+        position:absolute;left:{{(img.x * 32 * interfaceScale) + 'px'}};"/>
+    </div>
+    <div ng-repeat="img in level.objects">
+        <img
+        src="img/{{img.type}}.png"
+        style="top:{{(img.y * 32 * interfaceScale) + 'px'}};width:{{(32 * interfaceScale) + 'px'}};height:{{(32 * interfaceScale) + 'px'}};
+        position:absolute;left:{{(img.x * 32 * interfaceScale) + 'px'}};"
+        ng-click="select(img)"/>
+    </div>
+
+</div>
+<div class="col-sm-4">
+    content
+</div>

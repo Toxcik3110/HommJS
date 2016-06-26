@@ -1,0 +1,36 @@
+<div class="col-sm-12">
+    <div ng-repeat="data in grid">
+        <!-- <h1>{{img}}</h1> -->
+        <style media="screen">
+        .cell {
+            content:url("img/cell.png");
+        }
+        .cell:hover {
+            content:url("img/cellSelected.png");
+        }
+        </style>
+        <div ng-if="$even">
+            <div class="" ng-repeat="img in data">
+                <img class="cell"
+
+                style="top:{{(img.y * 24 * interfaceScale + offsetBattleY) + 'px'}};width:{{(32 * interfaceScale) + 'px'}};height:{{(32 * interfaceScale) + 'px'}};
+                position:absolute;left:{{(img.x * 32 * interfaceScale + offsetBattleX) + 'px'}};"
+                ng-click="select(img)"/>
+
+            </div>
+        </div>
+        <div ng-if="$odd">
+            <div class="" ng-repeat="img in data">
+                <img class="cell"
+                style="top:{{(img.y * 24 * interfaceScale + offsetBattleY) + 'px'}};width:{{(32 * interfaceScale) + 'px'}};height:{{(32 * interfaceScale) + 'px'}};
+                position:absolute;left:{{(img.x * 32 * interfaceScale + 32 + offsetBattleX) + 'px'}};"
+                ng-click="select(img)"/>
+
+            </div>
+        </div>
+
+        <!-- <h1>testmap</h1> -->
+    </div>
+
+
+</div>
