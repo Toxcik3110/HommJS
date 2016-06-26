@@ -34,7 +34,7 @@ app.controller('NewMapCtrl', ['$rootScope', '$scope', '$state', '$timeout', func
             //level2[0][0] = 1;
             level2[sel.y][sel.x] = 1;
             level2[img.y][img.x] = 0;
-            $scope.path = buildPath($scope.selectedObj, img, level2);
+            $scope.path = buildPath(sel, img, level2);
             //console.log(landGrid);
             console.log(level2);
             //console.log(path);
@@ -48,20 +48,26 @@ app.controller('NewMapCtrl', ['$rootScope', '$scope', '$state', '$timeout', func
         console.log(a);
         console.log("b");
         console.log(b);
+        // let ty = a;
+        // let buf = a.x;
+        // ty.x = a.y;
+        // ty.y = buf;
+        //a = ty;
         let aAr = [a];
         let step = 1;
         let endLoop = false;
         let last = b;
         while (!endLoop) {
             let i = 0;
-            console.log("iteration");
+            console.log("iteration", step-1);
             if(aAr.length == 0) return [];
-            console.log(step-1);
+            c.map(s => console.log(s.slice()));
             let al = aAr.length;
+            console.log(al);
             while(i < al) {
-                path[aAr[i].x][aAr[i].y] = step;
+                if(path[aAr[i].y][aAr[i].x] === 0) path[aAr[i].y][aAr[i].x] = step;
                 let checkFunc = function(x, y) {
-                    console.log("checkA, x: " + x + ", y:" + y);
+                    // console.log("checkA, x: " + x + ", y:" + y );
                     let checkX, checkY, checkEmpty;
                     checkX = (x >= 0 && x < path.length);
                     if(checkX) {
@@ -70,13 +76,14 @@ app.controller('NewMapCtrl', ['$rootScope', '$scope', '$state', '$timeout', func
                     }
                     if(checkY) {
                         // console.log("passed checkY");
-                        checkEmpty = path[x][y] == 0;
+                        console.log("path["+x+"]["+y+"]:" + path[x][y]);
+                        checkEmpty = path[x][y] === 0;
                     }
                     if(checkEmpty) {
-                        // console.log("passed checkE");
+                        console.log("passed checkE");
                         aAr.push({
-                            x:x,
-                            y:y
+                            x:y,
+                            y:x
                         });
                         if(x == b.y && y == b.x) {
                             switch (b.type) {
@@ -90,6 +97,7 @@ app.controller('NewMapCtrl', ['$rootScope', '$scope', '$state', '$timeout', func
                             }
                             console.log("MEET");
                             console.log(b);
+                            console.log(x,y);
                             endLoop = true;
                             return true;
                         }
@@ -98,18 +106,19 @@ app.controller('NewMapCtrl', ['$rootScope', '$scope', '$state', '$timeout', func
                     return true;
                 }
 
-                if(!checkFunc(aAr[i].x-1, aAr[i].y-1)) break;
-                if(!checkFunc(aAr[i].x-1, aAr[i].y)) break;
-                if(!checkFunc(aAr[i].x-1, aAr[i].y+1)) break;
-                if(!checkFunc(aAr[i].x, aAr[i].y-1)) break;
-                if(!checkFunc(aAr[i].x, aAr[i].y+1)) break;
-                if(!checkFunc(aAr[i].x+1, aAr[i].y-1)) break;
-                if(!checkFunc(aAr[i].x+1, aAr[i].y)) break;
-                if(!checkFunc(aAr[i].x+1, aAr[i].y+1)) break;
+                if(!checkFunc(aAr[i].y-1, aAr[i].x-1)) break;
+                if(!checkFunc(aAr[i].y-1, aAr[i].x)) break;
+                if(!checkFunc(aAr[i].y-1, aAr[i].x+1)) break;
+                if(!checkFunc(aAr[i].y, aAr[i].x-1)) break;
+                if(!checkFunc(aAr[i].y, aAr[i].x+1)) break;
+                if(!checkFunc(aAr[i].y+1, aAr[i].x-1)) break;
+                if(!checkFunc(aAr[i].y+1, aAr[i].x)) break;
+                if(!checkFunc(aAr[i].y+1, aAr[i].x+1)) break;
                 // aAr.shift();
                 i++;
             }
-            for(let j = 0; j < i; j++) {
+            // i = 0;
+            for(let j = 0; j < al; j++) {
                 aAr.shift();
             }
             step++;
@@ -128,33 +137,42 @@ app.controller('NewMapCtrl', ['$rootScope', '$scope', '$state', '$timeout', func
                     }
                 }
             }
+            c.map(s => console.log(s.slice()));
             console.log("x and y",x,y);
             console.log("max", max);
+            console.log(path);
             let elem = path[y][x];
             console.log("elem", elem);
+            //console.log(path);
             superPath.push({x:x, y:y, path:"pathEnd"});
+            //return;
+            //return;
+            let counter = 0;
             while(elem > 1) {
                 console.log("superPathStep");
                 console.log(elem);
-                function addToPath(y1,x1) {
+                console.log(superPath.slice());
+                function addToPath(x1,y1) {
                     if(x1 >= 0 && y1 >= 0 && y1 <= path.length-1 && x1 <= path[y1].length-1 )
                     if(path[y1][x1] == elem-1) {
                         elem = path[y1][x1];
                         x = x1;
                         y = y1;
-                        superPath.push({x:x1, y:y1, path:"path"});
+                        superPath.push({'x':x1, 'y':y1, path:"path"});
                         return true;
                     }
                     return false;
                 }
-                addToPath(y-1,x)||
-                addToPath(y,x-1)||
-                addToPath(y+1,x)||
-                addToPath(y,x+1)||
-                addToPath(y-1,x-1)||
-                addToPath(y-1,x+1)||
-                addToPath(y+1,x-1)||
-                addToPath(y+1,x+1);
+                addToPath(x-1,y)||
+                addToPath(x,y-1)||
+                addToPath(x+1,y)||
+                addToPath(x,y+1)||
+                addToPath(x-1,y-1)||
+                addToPath(x-1,y+1)||
+                addToPath(x+1,y-1)||
+                addToPath(x+1,y+1);
+                counter++;
+                if (counter > 10) return;
             }
             //$scope.selectedObj.x = b.x;
             //$scope.selectedObj.y = b.y;
@@ -185,9 +203,13 @@ app.controller('NewMapCtrl', ['$rootScope', '$scope', '$state', '$timeout', func
         // console.log($scope.selectedObj);
         // console.log("to");
         // console.log(img);
-        let n = $scope.path.length;
-        for(let i = n-1; i >= 0; i--) {
-            moving(n,i);
+        if(img.path == "pathEnd") {
+            let n = $scope.path.length;
+            landGrid[img.y][img.x] = -1;
+            landGrid[$scope.selectedObj.y][$scope.selectedObj.x] = 0;
+            for(let i = n-1; i >= 0; i--) {
+                moving(n,i);
+            }
         }
         //setTimeout(() => $scope.$apply(), (n)*500+10);
     }

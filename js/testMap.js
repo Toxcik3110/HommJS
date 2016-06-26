@@ -408,7 +408,7 @@ var newMap = {
         ],
         "objects":[
             {
-                "x":3,
+                "x":4,
                 "y":3,
                 "type":"hero",
                 "owner":"red"

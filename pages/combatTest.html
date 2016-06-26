@@ -5,32 +5,41 @@
         .cell {
             content:url("img/cell.png");
         }
+        .cellHighlight {
+            content:url("img/cellSelected.png");
+        }
+        .cellHighlight:hover {
+            animation: blink1 2s;
+            animation-iteration-count: infinite;
+        }
         .cell:hover {
             content:url("img/cellSelected.png");
         }
         </style>
-        <div ng-if="$even">
+        <div>
             <div class="" ng-repeat="img in data">
-                <img class="cell"
-
+                <img ng-class="img.value>0 ? 'cellHighlight' : 'cell'"
                 style="top:{{(img.y * 24 * interfaceScale + offsetBattleY) + 'px'}};width:{{(32 * interfaceScale) + 'px'}};height:{{(32 * interfaceScale) + 'px'}};
-                position:absolute;left:{{(img.x * 32 * interfaceScale + offsetBattleX) + 'px'}};"
-                ng-click="select(img)"/>
-
-            </div>
-        </div>
-        <div ng-if="$odd">
-            <div class="" ng-repeat="img in data">
-                <img class="cell"
-                style="top:{{(img.y * 24 * interfaceScale + offsetBattleY) + 'px'}};width:{{(32 * interfaceScale) + 'px'}};height:{{(32 * interfaceScale) + 'px'}};
-                position:absolute;left:{{(img.x * 32 * interfaceScale + 32 + offsetBattleX) + 'px'}};"
-                ng-click="select(img)"/>
-
+                position:absolute;left:{{(img.x * 32 * interfaceScale + (32 * (img.y % 2)) + offsetBattleX) + 'px'}};"
+                ng-click="cellClick(img)"/>
             </div>
         </div>
 
-        <!-- <h1>testmap</h1> -->
     </div>
+    <div ng-repeat="img in units">
+        <!-- <h1>{{img}}</h1> -->
+        <style media="screen">
 
+        </style>
+                <img src="img/{{img.name}}.png"
+                ng-class="img.active ? 'unitMove' : ''"
+                style="top:{{(img.y * 24 * interfaceScale + offsetBattleY) + 'px'}};width:{{(32 * interfaceScale) + 'px'}};height:{{(32 * interfaceScale) + 'px'}};
+                position:absolute;left:{{(img.x * 32 * interfaceScale + (32 * (img.y % 2)) + offsetBattleX) + 'px'}};"
+                ng-click="select(img)"/>
+                <label style="top:{{(img.y * 24 * interfaceScale + offsetBattleY + 24*interfaceScale) + 'px'}};
+                position:absolute;left:{{(img.x * 32 * interfaceScale + 24*interfaceScale + (32 * (img.y % 2)) + offsetBattleX) + 'px'}};" class="label label-{{img.owner=='right'?'danger':'primary'}}">{{img.count}}</label>
+
+
+    </div>
 
 </div>

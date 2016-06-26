@@ -1,3 +1,37 @@
+@keyframes blink {
+
+    0% {
+        -webkit-filter: brightness(200%);
+        filter: brightness(200%);
+    }
+    50% {
+        -webkit-filter: brightness(50%);
+        filter: brightness(50%);
+    }
+    100% {
+        -webkit-filter: brightness(200%);
+        filter: brightness(200%);
+    }
+}
+@keyframes blink1 {
+
+    0% {
+        -webkit-filter: brightness(150%);
+        filter: brightness(15%);
+    }
+    50% {
+        -webkit-filter: brightness(75%);
+        filter: brightness(75%);
+    }
+    100% {
+        -webkit-filter: brightness(75%);
+        filter: brightness(75%);
+    }
+}
+.unitMove {
+    animation: blink 1s;
+    animation-iteration-count: infinite;
+}
 body {
     margin: 0;
     padding: 0;
@@ -21,7 +55,10 @@ body {
 }
 .cell {
     content:url("img/cell.png");
+    /*box-shadow: 10px 10px 5px #888888;*/
 }
 .cell:hover {
-    content:url("img/cellSelected.png");
+    animation: blink1 2s;
+    animation-iteration-count: infinite;
+    /*content:url("img/cellSelected.png");*/
 }
