@@ -24,6 +24,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "pages/testMap.html",
       controller: 'TestMapCtrl'
     })
+    .state('newMap', {
+      url: "",
+      templateUrl: "pages/newMap.html",
+      controller: 'NewMapCtrl'
+    })
 });
 app.filter('firstLayer', function(){
     return function(input) {
