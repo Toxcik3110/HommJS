@@ -169,8 +169,8 @@ var newMap = {
             {
                 "x":0,
                 "y":0,
-                "type":"water",
-                "biom":"ocean"
+                "type":"land",
+                "biom":"grass"
             },
             {
                 "x":1,
