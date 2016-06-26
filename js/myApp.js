@@ -30,6 +30,21 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "pages/newMap.html",
       controller: 'NewMapCtrl'
     })
+    .state('combatTest', {
+      url: "",
+      templateUrl: "pages/combatTest.html",
+      controller: 'CombatTestCtrl'
+    })
+    .state('cityView', {
+      url: "",
+      templateUrl: "pages/cityView.html",
+      controller: 'CityViewCtrl'
+    })
+    .state('spellBook', {
+      url: "",
+      templateUrl: "pages/spellBook.html",
+      controller: 'SpellBookCtrl'
+    })
 });
 app.filter('firstLayer', function(){
     return function(input) {
