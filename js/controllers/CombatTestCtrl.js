@@ -227,35 +227,19 @@ app.controller('CombatTestCtrl', ['$rootScope', '$scope', '$state', '$timeout', 
             $scope.attack = !$scope.attack;
         } else if (cell.value > 0){
             if($scope.attack) {
+                let ed = $scope.selectedEnemy.dmg.split("-");
+                let ad = $scope.selectedUnit.dmg.split("-");
+                ed = Math.random()*ed[1] + ed[0];
+                ad = Math.random()*ad[1] + ad[0];
+
                 if($scope.selectedEnemy.canCounter > 0) {
-                    let ed = $scope.selectedEnemy.dmg.split("-");
-                    let ad = $scope.selectedUnit.dmg.split("-");
-                    ed = Math.random()*ed[1] + ed[0];
-                    ad = Math.random()*ad[1] + ad[0];
                     $scope.selectedUnit.totalHp -= $scope.selectedEnemy.count * ed +
                     Math.ceil($scope.selectedEnemy.count * ed * $scope.selectedEnemy.attack/50) -
                     Math.ceil($scope.selectedEnemy.count * ed * $scope.selectedUnit.deffence/50);
-
-                    let allyDmg = $scope.selectedUnit.count * ad +
-                    Math.ceil($scope.selectedUnit.count * ad * $scope.selectedUnit.attack/50) -
-                    Math.ceil($scope.selectedUnit.count * ad * $scope.selectedEnemy.deffence/50);
-
-                    console.log("ally dmg:", allyDmg);
-                    console.log("enemy hp:", $scope.selectedEnemy.totalHp);
-
-                    $scope.selectedEnemy.totalHp -= allyDmg;
-
-                    $scope.selectedEnemy.hp = $scope.selectedEnemy.totalHp % $scope.selectedEnemy.hitPoints;
-                    $scope.selectedEnemy.count = Math.ceil($scope.selectedEnemy.totalHp / $scope.selectedEnemy.count);
                     $scope.selectedUnit.hp = $scope.selectedUnit.totalHp % $scope.selectedUnit.hitPoints;
                     $scope.selectedUnit.count = Math.ceil($scope.selectedUnit.totalHp / $scope.selectedUnit.count);
                     $scope.selectedEnemy.canCounter--;
-                    if($scope.selectedEnemy.totalHp <= 0) {
-                        if(checkUnits($scope.selectedEnemy)) {
-                            alert("VICTORY");
-                            return;
-                        }
-                    } else if ($scope.selectedUnit.totalHp <= 0) {
+                    if ($scope.selectedUnit.totalHp <= 0) {
                         if(checkUnits($scope.selectedUnit)) {
                             alert("LOOSE");
                             return;
@@ -263,6 +247,23 @@ app.controller('CombatTestCtrl', ['$rootScope', '$scope', '$state', '$timeout', 
 
                     }
                 }
+                let allyDmg = $scope.selectedUnit.count * ad +
+                Math.ceil($scope.selectedUnit.count * ad * $scope.selectedUnit.attack/50) -
+                Math.ceil($scope.selectedUnit.count * ad * $scope.selectedEnemy.deffence/50);
+
+                console.log("ally dmg:", allyDmg);
+                console.log("enemy hp:", $scope.selectedEnemy.totalHp);
+
+                $scope.selectedEnemy.totalHp -= allyDmg;
+
+                $scope.selectedEnemy.hp = $scope.selectedEnemy.totalHp % $scope.selectedEnemy.hitPoints;
+                $scope.selectedEnemy.count = Math.ceil($scope.selectedEnemy.totalHp / $scope.selectedEnemy.count);
+                if($scope.selectedEnemy.totalHp <= 0) {
+                    if(checkUnits($scope.selectedEnemy)) {
+                        alert("VICTORY");
+                        return;
+                    }
+
             }
             $scope.grid[$scope.selectedUnit.y][$scope.selectedUnit.x].value = 0;
             $scope.selectedUnit.x = cell.x;
