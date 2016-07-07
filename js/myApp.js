@@ -11,37 +11,37 @@ app.config(function($stateProvider, $urlRouterProvider) {
   // Now set up the states
   $stateProvider
     .state('game', {
-      url: "",
+      url: "game",
       templateUrl: "pages/main.html",
       controller: 'MainCtrl'
     })
     .state('menu', {
-      url: "",
+      url: "menu",
       templateUrl: "pages/menu.html",
       controller: 'MenuCtrl'
     })
     .state('testMap', {
-      url: "",
+      url: "testMap",
       templateUrl: "pages/testMap.html",
       controller: 'TestMapCtrl'
     })
     .state('newMap', {
-      url: "",
+      url: "newMap",
       templateUrl: "pages/newMap.html",
       controller: 'NewMapCtrl'
     })
     .state('combatTest', {
-      url: "",
+      url: "combat",
       templateUrl: "pages/combatTest.html",
       controller: 'CombatTestCtrl'
     })
     .state('cityView', {
-      url: "",
+      url: "city",
       templateUrl: "pages/cityView.html",
       controller: 'CityViewCtrl'
     })
     .state('spellBook', {
-      url: "",
+      url: "spell",
       templateUrl: "pages/spellBook.html",
       controller: 'SpellBookCtrl'
     })

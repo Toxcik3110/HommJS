@@ -263,6 +263,7 @@ app.controller('CombatTestCtrl', ['$rootScope', '$scope', '$state', '$timeout', 
                         alert("VICTORY");
                         return;
                     }
+                }
 
             }
             $scope.grid[$scope.selectedUnit.y][$scope.selectedUnit.x].value = 0;

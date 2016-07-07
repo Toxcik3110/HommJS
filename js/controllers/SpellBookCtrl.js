@@ -1,4 +1,4 @@
-app.controller('CityViewCtrl', ['$rootScope', '$scope', '$state', '$timeout', function($rootScope, $scope, $state, $timeout) {
+app.controller('SpellBookCtrl', ['$rootScope', '$scope', '$state', '$timeout', function($rootScope, $scope, $state, $timeout) {
     // document.activeElement = document.getElementById('eventHandler');
     //document.getElementById('eventHandler').focus();
     $scope.grid = [];

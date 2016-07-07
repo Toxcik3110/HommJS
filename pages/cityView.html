@@ -1,17 +1,13 @@
-<div class="col-sm-8">
-    <div ng-repeat="img in grid">
-        <!-- <h1>{{img}}</h1> -->
-        <img
-        src="img/cell.png"
-        style="top:{{(img.y * 32 * interfaceScale) + 'px'}};width:{{(32 * interfaceScale) + 'px'}};height:{{(32 * interfaceScale) + 'px'}};
-        position:absolute;left:{{(img.x * 32 * interfaceScale) + 'px'}};"
-        ng-click="select(img)"/>
-
-        <!-- <h1>testmap</h1> -->
-    </div>
-
-
-</div>
-<div class="col-sm-4">
+<div style="background-color:#F5F5F5;width:100vw;height:65vh;">
     content
+</div>
+<div style="background-color:#F50C0C;width:100vw;height:35vh;">
+    <div ng-repeat="unit in armyCastle" style="position:absolute;left:{{20+unit.id*100/12}}vw;top:65vh;
+    background-color:#431;border:4px inset #F50C0C;width:{{100/12}}vw;height:15vh;">
+        {{unit.id}}
+    </div>
+    <div ng-repeat="unit in armyHero" style="position:absolute;left:{{20+unit.id*100/12}}vw;top:80vh;
+    background-color:#431;border:4px outset #F50C0C;width:{{100/12}}vw;height:15vh;">
+        {{unit.id}}
+    </div>
 </div>
