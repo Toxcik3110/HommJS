@@ -1,13 +1,58 @@
 <div style="background-color:#F5F5F5;width:100vw;height:65vh;">
     content
 </div>
-<div style="background-color:#F50C0C;width:100vw;height:35vh;">
-    <div ng-repeat="unit in armyCastle" style="position:absolute;left:{{20+unit.id*100/12}}vw;top:65vh;
+<div style="background-color:#F50C0C;width:100vw;height:35vh;border:10px groove yellow;">
+    <div style="position:absolute;left:1vw;top:66vh;
+    background-color:#431;border:4px inset #F50C0C;width:8.33vw;height:12vh;">
+
+    </div>
+
+    <div style="position:absolute;left:9.34vw;top:66vh;
+    background-color:#431;border:4px inset #F50C0C;width:16.66vw;height:4vh;">
+
+    </div>
+    <div style="position:absolute;left:9.34vw;top:72vh;
+    background-color:#431;border:4px inset #F50C0C;width:4vw;height:6vh;">
+
+    </div>
+    <div style="position:absolute;left:13.34vw;top:72vh;
+    background-color:#431;border:4px inset #F50C0C;width:4vw;height:6vh;">
+
+    </div>
+    <div style="position:absolute;left:17.68vw;top:70vh;
+    background-color:#431;border:4px inset #F50C0C;width:8.33vw;height:8vh;">
+
+    </div>
+    <div ng-repeat="unit in stockArmy" style="position:absolute;left:{{1+(unit.id%4)*6}}vw;top:{{unit.id<4?80:88}}vh;
+    background-color:#431;border:4px inset #F50C0C;width:6vw;height:8vh;">
+
+    </div>
+    <div ng-repeat="unit in armyCastle" style="position:absolute;left:{{26+unit.id*100/12}}vw;top:66vh;
     background-color:#431;border:4px inset #F50C0C;width:{{100/12}}vw;height:15vh;">
         {{unit.id}}
     </div>
-    <div ng-repeat="unit in armyHero" style="position:absolute;left:{{20+unit.id*100/12}}vw;top:80vh;
-    background-color:#431;border:4px outset #F50C0C;width:{{100/12}}vw;height:15vh;">
+    <div ng-repeat="unit in armyHero" style="position:absolute;left:{{26+unit.id*100/12}}vw;top:81vh;
+    background-color:#431;border:4px inset #F50C0C;width:{{100/12}}vw;height:15vh;">
         {{unit.id}}
+    </div>
+    <div style="position:absolute;left:92.5vw;top:66vh;
+    background-color:#431;border:4px inset #F50C0C;width:7vw;height:6vh;">
+
+    </div>
+    <div style="position:absolute;left:92.5vw;top:66vh;
+    background-color:#431;border:4px inset #F50C0C;width:7vw;height:6vh;">
+
+    </div>
+    <div ng-click="cityUp()" style="position:absolute;left:92.5vw;top:72vh;
+    background-color:{{firstPos == 0?'#431':'#F5D00C'}};border:4px inset #F50C0C;width:7vw;height:3vh;">
+
+    </div>
+    <div ng-repeat="city in cities | onlyThreeCities:firstPos" style="position:absolute;left:92.5vw;top:{{75+$index*6}}vh;
+    background-color:{{city.color}};border:4px inset #F50C0C;width:7vw;height:6vh;">
+
+    </div>
+    <div ng-click="cityDown()" style="position:absolute;left:92.5vw;top:93vh;
+    background-color:{{firstPos == cities.length-3 ?'#431':'#F5D00C'}};border:4px inset #F50C0C;width:7vw;height:3vh;">
+
     </div>
 </div>
