@@ -8,7 +8,8 @@ app.controller('CityViewCtrl', ['$rootScope', '$scope', '$state', '$timeout', fu
     $scope.cities = [];
     $scope.owner = 'red';
     $scope.castleType = 'castle';
-    $scope.building = {main: {level:1, maxLevel:2}};
+    $scope.building = {main: {level:1, maxLevel:3}};
+    $scope.availableBuild = true;
     for(let i = 0; i < 8; i++) {
         $scope.armyCastle.push({id:i});
         $scope.armyHero.push({id:i});
@@ -28,9 +29,18 @@ app.controller('CityViewCtrl', ['$rootScope', '$scope', '$state', '$timeout', fu
         }
     }
 
+    $scope.showBuild = function(bool) {
+        $scope.build = bool;
+    }
+
     $scope.upgrade = function(building) {
-        if(building.level != building.maxLevel) {
-            building.level++;
+        console.log(building);
+        if($scope.availableBuild) {
+            if(building.level != building.maxLevel) {
+                building.level++;
+                $scope.availableBuild = false;
+            }
+            $scope.showBuild(false);
         }
     }
 

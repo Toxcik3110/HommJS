@@ -12,7 +12,9 @@
         <!-- <option value="blue">blue</option>
         <option value="green">green</option> -->
     </select>
-    <div class="building" ng-click="upgrade(building.main)" style="background-repeat:no-repeat;background-size:cover;background-image:url('img/{{castleType}}_main_t{{building.main.level}}.png');position:absolute;left:5vw;top:30vh;width:10vw;height:10vw;">
+    <div class="building" ng-click="showBuild(true)" style="background-repeat:no-repeat;background-size:cover;
+    background-image:url('img/{{castleType}}_main_t{{building.main.level}}.png');
+    position:absolute;left:5vw;top:30vh;width:10vw;height:10vw;">
 
     </div>
 </div>
@@ -69,6 +71,25 @@
     </div>
     <div ng-click="cityDown()" style="position:absolute;left:92.5vw;top:93vh;
     background-color:{{firstPos == cities.length-3 ?'#431':'#F5D00C'}};border:4px inset {{owner | ownerColor}};width:7vw;height:3vh;">
+
+    </div>
+</div>
+<!-- modal build ui -->
+<div ng-if="build" style="border:10px groove #F5D00C;position:absolute;left:0vw;top:0vh;width:100vw;height:96vh;background-color:{{owner | ownerColor}}">
+    <div style="background-color:#221;position:absolute;width:87.5vw;height:91vh;left:5vw;top:4vh;">
+
+    </div>
+    <div style="border:10px groove #F5D00C;
+    background-image:url('img/{{castleType}}_main_t{{building.main.level+1}}.png');background-size:cover;
+    background-color:#221;position:absolute;width:10vw;height:20vh;left:5vw;top:4vh;">
+
+    </div>
+    <div ng-click="upgrade(building.main)" style="border:10px groove #F5D00C;
+    background-color:{{availableBuild?'#0c0':'#c00'}};position:absolute;width:10vw;height:4vh;left:5vw;top:24vh;">
+        Build
+    </div>
+    <div ng-click="showBuild(false)" style="background-color:#F5D00C;position:absolute;width:7vw;height:8vh;left:92.5vw;top:87vh;
+    border:4px inset {{owner | ownerColor}};">
 
     </div>
 </div>
