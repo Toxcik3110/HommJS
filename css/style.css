@@ -13,6 +13,21 @@
         filter: brightness(200%);
     }
 }
+@keyframes blink2 {
+
+    0% {
+        -webkit-filter: brightness(200%);
+        filter: brightness(200%);
+    }
+    50% {
+        -webkit-filter: brightness(100%);
+        filter: brightness(100%);
+    }
+    100% {
+        -webkit-filter: brightness(200%);
+        filter: brightness(200%);
+    }
+}
 @keyframes blink1 {
 
     0% {
@@ -30,6 +45,11 @@
 }
 .unitMove {
     animation: blink 1s;
+    animation-iteration-count: infinite;
+}
+
+.building:hover {
+    animation: blink2 4s;
     animation-iteration-count: infinite;
 }
 body {

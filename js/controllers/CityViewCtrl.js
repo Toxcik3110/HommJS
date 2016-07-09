@@ -6,6 +6,9 @@ app.controller('CityViewCtrl', ['$rootScope', '$scope', '$state', '$timeout', fu
     $scope.armyHero = [];
     $scope.stockArmy = [];
     $scope.cities = [];
+    $scope.owner = 'red';
+    $scope.castleType = 'castle';
+    $scope.building = {main: {level:1, maxLevel:2}};
     for(let i = 0; i < 8; i++) {
         $scope.armyCastle.push({id:i});
         $scope.armyHero.push({id:i});
@@ -25,8 +28,30 @@ app.controller('CityViewCtrl', ['$rootScope', '$scope', '$state', '$timeout', fu
         }
     }
 
-}])
+    $scope.upgrade = function(building) {
+        if(building.level != building.maxLevel) {
+            building.level++;
+        }
+    }
 
+}])
+app.filter('ownerColor', function() {
+    return function(input) {
+        switch (input) {
+            case 'red':
+                return '#C50C0C';
+                break;
+            case 'blue':
+                return '#0C0CB5';
+                break;
+            case 'green':
+                return '#0C850C';
+                break;
+            default:
+            return '#850C0C';
+        }
+    }
+})
 app.filter('onlyThreeCities', function() {
     return function(input, a) {
         let s = input.map((x) => x);
