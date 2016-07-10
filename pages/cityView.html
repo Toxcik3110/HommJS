@@ -17,6 +17,11 @@
     position:absolute;left:5vw;top:30vh;width:10vw;height:10vw;">
 
     </div>
+    <div class="building" ng-click="" style="background-repeat:no-repeat;background-size:cover;
+    background-image:url('img/{{castleType}}_fort_t{{building.fort.level}}.png');
+    position:absolute;left:80vw;top:7vh;width:10vw;height:10vw;">
+
+    </div>
 </div>
 <!-- Bottom ui (units) -->
 <div style="background-color:{{owner | ownerColor}};width:100vw;height:35vh;border:10px groove yellow;">
@@ -61,31 +66,75 @@
     background-color:#431;border:4px inset {{owner | ownerColor}};width:7vw;height:6vh;">
 
     </div>
+    <!-- bottom sidebar with citites -->
+    <!-- scroll-up -->
     <div ng-click="cityUp()" style="position:absolute;left:92.5vw;top:72vh;
     background-color:{{firstPos == 0?'#431':'#F5D00C'}};border:4px inset {{owner | ownerColor}};width:7vw;height:3vh;">
 
     </div>
+    <!-- list of cities -->
     <div ng-repeat="city in cities | onlyThreeCities:firstPos" style="position:absolute;left:92.5vw;top:{{75+$index*6}}vh;
     background-color:{{city.color}};border:4px inset {{owner | ownerColor}};width:7vw;height:6vh;">
 
     </div>
+    <!-- scroll-down -->
     <div ng-click="cityDown()" style="position:absolute;left:92.5vw;top:93vh;
     background-color:{{firstPos == cities.length-3 ?'#431':'#F5D00C'}};border:4px inset {{owner | ownerColor}};width:7vw;height:3vh;">
 
     </div>
+    <!-- resources -->
+    <!-- wood -->
+    <div style="position:absolute;left:1vw;top:96vh;background-repeat:no-repeat;
+    background-image:url('img/wood_icon.png');width:2vw;height:3vh;">
+        <div style="position:absolute;left:2vw;top:0vh;
+        border:4px inset {{owner | ownerColor}};color:white;width:3vw;height:3vh;">
+        {{resources.wood}}
+        </div>
+
+    </div>
+    <!-- stone -->
+    <div style="position:absolute;left:7vw;top:96vh;background-repeat:no-repeat;
+    background-image:url('img/stone_icon.png');width:2vw;height:3vh;">
+        <div style="position:absolute;left:2vw;top:0vh;
+        border:4px inset {{owner | ownerColor}};color:white;width:3vw;height:3vh;">
+        {{resources.stone}}
+        </div>
+
+    </div>
+    <!-- gold -->
+    <div style="position:absolute;left:13vw;top:96vh;background-repeat:no-repeat;
+    background-image:url('img/gold_icon.png');width:2vw;height:3vh;">
+        <div style="position:absolute;left:2vw;top:0vh;
+        border:4px inset {{owner | ownerColor}};color:white;width:3vw;height:3vh;">
+        {{resources.gold}}
+        </div>
+
+    </div>
 </div>
 <!-- modal build ui -->
-<div ng-if="build" style="border:10px groove #F5D00C;position:absolute;left:0vw;top:0vh;width:100vw;height:96vh;background-color:{{owner | ownerColor}}">
-    <div style="background-color:#221;position:absolute;width:87.5vw;height:91vh;left:5vw;top:4vh;">
+<div ng-if="build" style="border:10px groove #F5D00C;position:absolute;left:0vw;top:0vh;width:100vw;height:96vh;
+background-color:{{owner | ownerColor}}">
+    <div style="background-color:#221;position:absolute;width:97.5vw;height:91vh;left:1vw;top:1vh;">
 
     </div>
     <div style="border:10px groove #F5D00C;
-    background-image:url('img/{{castleType}}_main_t{{building.main.level+1}}.png');background-size:cover;
+    background-image:url('img/{{castleType}}_main_t{{building.main.level==building.main.maxLevel?building.main.maxLevel:building.main.level+1}}.png');
+    background-size:cover;
     background-color:#221;position:absolute;width:10vw;height:20vh;left:5vw;top:4vh;">
 
     </div>
     <div ng-click="upgrade(building.main)" style="border:10px groove #F5D00C;
     background-color:{{availableBuild?'#0c0':'#c00'}};position:absolute;width:10vw;height:4vh;left:5vw;top:24vh;">
+        Build
+    </div>
+    <div style="border:10px groove #F5D00C;
+    background-image:url('img/{{castleType}}_fort_t{{building.fort.level==building.fort.maxLevel?building.fort.maxLevel:building.fort.level+1}}.png');
+    background-size:cover;
+    background-color:#221;position:absolute;width:10vw;height:20vh;left:20vw;top:4vh;">
+
+    </div>
+    <div ng-click="upgrade(building.fort)" style="border:10px groove #F5D00C;
+    background-color:{{availableBuild?'#0c0':'#c00'}};position:absolute;width:10vw;height:4vh;left:20vw;top:24vh;">
         Build
     </div>
     <div ng-click="showBuild(false)" style="background-color:#F5D00C;position:absolute;width:7vw;height:8vh;left:92.5vw;top:87vh;

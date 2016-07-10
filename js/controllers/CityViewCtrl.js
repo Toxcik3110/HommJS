@@ -8,7 +8,15 @@ app.controller('CityViewCtrl', ['$rootScope', '$scope', '$state', '$timeout', fu
     $scope.cities = [];
     $scope.owner = 'red';
     $scope.castleType = 'castle';
-    $scope.building = {main: {level:1, maxLevel:3}};
+    $scope.resources = {
+        wood: 15,
+        stone: 20,
+        gold:2500
+    }
+    $scope.building = {
+        main: {level:1, maxLevel:3},
+        fort: {level:0, maxLevel:1}
+    };
     $scope.availableBuild = true;
     for(let i = 0; i < 8; i++) {
         $scope.armyCastle.push({id:i});
