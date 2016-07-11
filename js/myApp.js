@@ -45,6 +45,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "pages/spellBook.html",
       controller: 'SpellBookCtrl'
     })
+    .state('heroStats', {
+      url: "hero",
+      templateUrl: "pages/hero.html",
+      controller: 'HeroCtrl'
+    })
+    .state('unitStats', {
+      url: "unit",
+      templateUrl: "pages/unit.html",
+      controller: 'UnitCtrl'
+    })
 });
 app.filter('firstLayer', function(){
     return function(input) {

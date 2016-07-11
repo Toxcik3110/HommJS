@@ -17,7 +17,7 @@
     position:absolute;left:5vw;top:30vh;width:10vw;height:10vw;">
 
     </div>
-    <div class="building" ng-click="" style="background-repeat:no-repeat;background-size:cover;
+    <div class="building" ng-click="showHire(true)" style="background-repeat:no-repeat;background-size:cover;
     background-image:url('img/{{castleType}}_fort_t{{building.fort.level}}.png');
     position:absolute;left:80vw;top:7vh;width:10vw;height:10vw;">
 
@@ -114,30 +114,50 @@
 <!-- modal build ui -->
 <div ng-if="build" style="border:10px groove #F5D00C;position:absolute;left:0vw;top:0vh;width:100vw;height:96vh;
 background-color:{{owner | ownerColor}}">
-    <div style="background-color:#221;position:absolute;width:97.5vw;height:91vh;left:1vw;top:1vh;">
+    <div style="background-color:#221;position:absolute;width:99vw;height:94vh;left:0vw;top:0vh;">
 
     </div>
     <div style="border:10px groove #F5D00C;
     background-image:url('img/{{castleType}}_main_t{{building.main.level==building.main.maxLevel?building.main.maxLevel:building.main.level+1}}.png');
     background-size:cover;
     background-color:#221;position:absolute;width:10vw;height:20vh;left:5vw;top:4vh;">
-
-    </div>
-    <div ng-click="upgrade(building.main)" style="border:10px groove #F5D00C;
-    background-color:{{availableBuild?'#0c0':'#c00'}};position:absolute;width:10vw;height:4vh;left:5vw;top:24vh;">
+        <div ng-click="upgrade(building.main)" style="border:10px groove #F5D00C;
+        background-color:{{availableBuild?'#0c0':'#c00'}};position:absolute;width:10vw;height:4vh;left:-0.5vw;top:19vh;">
         Build
+        </div>
+
     </div>
     <div style="border:10px groove #F5D00C;
     background-image:url('img/{{castleType}}_fort_t{{building.fort.level==building.fort.maxLevel?building.fort.maxLevel:building.fort.level+1}}.png');
     background-size:cover;
     background-color:#221;position:absolute;width:10vw;height:20vh;left:20vw;top:4vh;">
-
-    </div>
-    <div ng-click="upgrade(building.fort)" style="border:10px groove #F5D00C;
-    background-color:{{availableBuild?'#0c0':'#c00'}};position:absolute;width:10vw;height:4vh;left:20vw;top:24vh;">
+        <div ng-click="upgrade(building.fort)" style="border:10px groove #F5D00C;
+        background-color:{{availableBuild?'#0c0':'#c00'}};position:absolute;width:10vw;height:4vh;left:-0.5vw;top:19vh;">
         Build
     </div>
+
+    </div>
     <div ng-click="showBuild(false)" style="background-color:#F5D00C;position:absolute;width:7vw;height:8vh;left:92.5vw;top:87vh;
+    border:4px inset {{owner | ownerColor}};">
+
+    </div>
+</div>
+<!-- modal fort-hire ui -->
+<div ng-if="hire" style="border:10px groove #F5D00C;position:absolute;left:0vw;top:0vh;width:100vw;height:96vh;
+background-color:{{owner | ownerColor}}">
+    <div style="background-color:#221;position:absolute;width:99vw;height:94vh;left:0vw;top:0vh;">
+
+    </div>
+    <div class="">
+        <div ng-repeat="unit in hireUnits"
+        style="background-color:{{owner|ownerColor}};border:{{owner|ownerColor}} inset 4px;
+        position:absolute;left:{{unit.id<6?(unit.id%2)*50:25}}vw;
+        top:{{unit.id<2?0:unit.id<4?25:unit.id<6?50:75}}vh;
+        width:15vw;height:18vh;">
+
+        </div>
+    </div>
+    <div ng-click="showHire(false)" style="background-color:#F5D00C;position:absolute;width:7vw;height:8vh;left:92.5vw;top:87vh;
     border:4px inset {{owner | ownerColor}};">
 
     </div>

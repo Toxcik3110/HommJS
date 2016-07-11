@@ -13,6 +13,7 @@ app.controller('CityViewCtrl', ['$rootScope', '$scope', '$state', '$timeout', fu
         stone: 20,
         gold:2500
     }
+    $scope.hireUnits = [];
     $scope.building = {
         main: {level:1, maxLevel:3},
         fort: {level:0, maxLevel:1}
@@ -21,8 +22,13 @@ app.controller('CityViewCtrl', ['$rootScope', '$scope', '$state', '$timeout', fu
     for(let i = 0; i < 8; i++) {
         $scope.armyCastle.push({id:i});
         $scope.armyHero.push({id:i});
-        $scope.stockArmy.push({id:i});
+
+
         $scope.cities.push({id:i,color:"rgb(0,0," + i*25 +")"});
+    }
+    for (let i = 0; i < 7; i++) {
+        $scope.hireUnits.push({id:i});
+        $scope.stockArmy.push({id:i});
     }
     console.log(12);
 
@@ -39,6 +45,10 @@ app.controller('CityViewCtrl', ['$rootScope', '$scope', '$state', '$timeout', fu
 
     $scope.showBuild = function(bool) {
         $scope.build = bool;
+    }
+
+    $scope.showHire = function(bool) {
+        $scope.hire = bool;
     }
 
     $scope.upgrade = function(building) {
