@@ -1,7 +1,7 @@
 var app = angular.module('myApp', ['ui.router']);
 app.run(function($rootScope, $state) {
     $rootScope.interfaceScale = 2;
-    $state.go('cityView');
+    $state.go('menu');
 });
 app.config(function($stateProvider, $urlRouterProvider) {
   //
