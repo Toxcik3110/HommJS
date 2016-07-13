@@ -268,6 +268,12 @@ app.controller('NewMapCtrl', ['$rootScope', '$scope', '$state', '$timeout', func
 
     $scope.generateLevel();
 
+    //Todo
+
+    $scope.getCastle = function() {
+        
+    }
+
 }])
 .filter('stringFilter', function() {
     return function(input) {
