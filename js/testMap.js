@@ -409,10 +409,21 @@ var newMap = {
         "objects":[
             {
                 "x":4,
+                "y":1,
+                "type":"castle_fort_t1",
+                "owner":"red"
+            },
+            {
+                "x":4,
                 "y":3,
                 "type":"hero",
                 "owner":"red"
             },
+            {
+                "x":5,
+                "y":5,
+                "type":"wood"
+            }
         ]
     }
 }
